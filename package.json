@@ -3,10 +3,9 @@
   "name": "preciodolar",
   "version": "1.0.0",
   "description": "",
-  "main": "index.php",
   "scripts": {
     "predeploy":"npm run build",
-    "deploy":"gh-pages ,d build"
+    "deploy":"gh-pages -d build"
   },
   "repository": {
     "type": "git",
