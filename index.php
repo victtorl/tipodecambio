@@ -5,35 +5,13 @@
      <title></title>
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-     <style type="text/css">
-      <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-     .cabecera {
-         background-color: aqua;
-         font-size: 20px;
-     }
-
-
-     .titulo {
-         font-size: 28px;
-         text-align: center;
-         font-family: inherit;
-         color: white;
-         margin-top: 6%
-     }
-
-     .form {
-         background-color: currentColor;
-         display: grid;
-     }
-
-     .fecha {}
-     </style>
+   
  </head>
 
  <body>
 
      <form action="" method="POST" class="form">
-         <p class="titulo lb">Precio del dolar hoy </p>>
+         <p class="titulo lb">PRECIO DEL DOLAR HOY</p>>
 
      </form>
      <div class="cabecer">
@@ -56,8 +34,20 @@
 
           <?php
 
+function actual_date ()  
+{  
+    $week_days = array ("Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado");  
+    $months = array ("", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");  
+    $year_now = date ("Y");  
+    $month_now = date ("n");  
+    $day_now = date ("j");  
+    $week_day_now = date ("w");  
+    $date = $week_days[$week_day_now] . ", " . $day_now . " de " . $months[$month_now] . " de " . $year_now;   
+    return $date;    
+} 
+
 $data = json_decode(file_get_contents('https://deperu.com/api/rest/cotizaciondolar.json'),1);
-$fecha=date('l jS \of F Y h:i:s A');
+$fecha=actual_date();
 $compra=($data["Cotizacion"][0]["Compra"]); 
 $venta=($data["Cotizacion"][0]["Venta"]);
 
@@ -90,8 +80,8 @@ $venta=($data["Cotizacion"][0]["Venta"]);
      <div class="container">
 
          <div class="row">
-             <div class="col-sm">
-                 <div class="card" style="width: 18rem;">
+             <div class="col-sm-6 col-md-6 col-lg-6">
+                 <div class="card" >
                      <div class="input-group mb-3">
                          <span class="input-group-text">$</span>
                          <input type="text" class="form-control form1">
@@ -106,8 +96,8 @@ $venta=($data["Cotizacion"][0]["Venta"]);
              </div>
 
   
-            <div class="col-sm ml-0">
-                <div class="card" style="width: 18rem;">
+            <div class="col-sm-6 col-md-6 col-lg-6 ">
+                <div class="card" >
                      <div class="input-group mb-3">
                          <span class="input-group-text">$</span>
                          <input type="text" class="form-control form2">
@@ -159,3 +149,47 @@ $venta=($data["Cotizacion"][0]["Venta"]);
   
 </script>
 
+
+<style type="text/css">
+      <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+     .cabecera {
+         background-color: aqua;
+         font-size: 20px;
+     }
+
+
+     .titulo {
+         font-size: 28px;
+         text-align: center;
+         font-family: inherit;
+         color: white;
+         margin-top: 6%
+     }
+
+     .form {
+         background-color: currentColor;
+         display: grid;
+     }
+
+    .card-body h5{
+        color:blue;
+        text-align:center;
+    }
+
+    .card-body p{
+        color:blue;
+        text-align:center;
+        font-size:20px;
+    }
+
+    td{
+        text-align:center;
+        font-size:20px;
+    }
+
+    @media (min-width: 900px) {
+
+
+     }
+     .fecha {}
+     </style>
